@@ -6,45 +6,16 @@ on:
   pull_request:
     branches: [master]
 env:
-  IMAGE_NAME: docker-gui
+  IMAGE_NAME: docker-gui-server
   IMAGE_TAGNAME: latest
 
 jobs:
-  build:
-    name: Building project
-    runs-on: ubuntu-latest
-    env:
-      DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-      DOCKER_PASS: ${{secrets.DOCKER_PASS}}
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm test
-      - name: Docker login
-        run: |
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASS
-      - name: Build docker image
-        run: docker build . --file Dockerfile -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAGNAME
-      - name: Docker push
-        run: docker push $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAGNAME
-
   package:
-    needs: [build]
     name: Packaging backend
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{secrets.GB_TOKEN}}
-      GH_USERNAME: 0salaheddine0
+      GH_USERNAME: Assifar-Karim
       GH_DOCKER_REGISTRY: ghcr.io
     steps:
       - uses: actions/checkout@v3
