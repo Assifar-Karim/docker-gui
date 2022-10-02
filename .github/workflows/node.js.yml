@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{secrets.GB_TOKEN}}
-      GH_USERNAME: Assifar-Karim
+      GH_USERNAME: assifar-karim
       GH_DOCKER_REGISTRY: ghcr.io
     steps:
       - uses: actions/checkout@v3
