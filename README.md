@@ -1,29 +1,28 @@
-[![GitHub version](https://badge.fury.io/gh/otothea%2Fdocker-ui.svg)](https://badge.fury.io/gh/otothea%2Fdocker-ui)
-[![GitHub downloads](https://img.shields.io/github/downloads/otothea/docker-ui/total.svg)](https://github.com/otothea/docker-ui)
-![build](https://github.com/0SalahEddine0/docker-gui/actions/workflows/node.js.yml/badge.svg)
-
 # Docker GUI
 
-Docker UI is a web app for viewing and managing Docker images, containers, volumes, etc in a web browser.
+Docker GUI is a web app for viewing and managing Docker images, containers, volumes, etc in a web browser.
 
-This project is also meant to serve as a working example of how to build a full-stack web app using:
+This project is a fork of the original Docker UI project made by @otothea and that can be found [here](https://github.com/otothea/docker-ui).
 
-- NodeJS
-- ExpressJS
-- ReactJS
-- MobX
-- FuseBox
+The initial project that we worked on together can be found [here](https://github.com/salaheddine-zemmouri/docker-gui)
 
-[![Docker UI Screenshot](https://raw.githubusercontent.com/otothea/docker-ui/master/screenshot.png)](https://raw.githubusercontent.com/otothea/docker-ui/master/screenshot.png)
+[![Docker UI Screenshot 1](https://raw.githubusercontent.com/Assifar-Karim/docker-gui/master/screenshot1.png)](https://raw.githubusercontent.com/Assifar-Karim/docker-gui/master/screenshot1.png)
+
+[![Docker UI Screenshot 2](https://raw.githubusercontent.com/Assifar-Karim/docker-gui/master/screenshot2.png)](https://raw.githubusercontent.com/Assifar-Karim/docker-gui/master/screenshot2.png)
+
+[![Docker UI Screenshot 3](https://raw.githubusercontent.com/Assifar-Karim/docker-gui/master/screenshot3.png)](https://raw.githubusercontent.com/Assifar-Karim/docker-gui/master/screenshot3.png)
 
 ## Usage
+The usage of Docker GUI takes three forms, if you wish to install both the client and the server in your local machine then follow the **production FULL** section. However, if you only wish to install the Docker GUI server in your machine then follow the **Production Server** section. 
 
-### Production (Docker)
+If you wish to contribute to Docker GUI and develop new features to the tool then you can follow the **Development** section.
 
-Pull the image
+### Production FULL
+
+Build the image
 
 ```bash
-docker pull otothea/docker-ui
+docker build -t docker-gui .
 ```
 
 Run it
@@ -31,8 +30,7 @@ Run it
 ```bash
 docker run -d -p 9898:9898 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  --name docker-ui \
-  otothea/docker-ui
+  --name docker-gui docker-gui
 ```
 
 Run it with authentication (see [environment variables](#environment-variables))
@@ -45,47 +43,31 @@ docker run -d -p 9898:9898 \
   -e DOCKER_UI_USER=username \
   -e DOCKER_UI_PASS=password \
   -e DOCKER_UI_SECRET=supersecretsessionkey \
-  otothea/docker-ui
+  docker-ui
 ```
 
-### Production (Node)
+### Production Server
 
-Clone the repository
+Pull the image
 
 ```bash
-git clone https://github.com/otothea/docker-ui.git
+docker pull ghcr.io/Assifar-Karim/docker-gui-server:latest
 ```
 
-Change to the repository directory
-
+Run it
 ```bash
-cd docker-ui
-```
-
-Install the production dependencies
-
-```bash
-npm install --prod
-```
-
-Copy the config and adjust as needed (see [config options](#config-options))
-
-```bash
-cp config.example.js config.js
-```
-
-Start the server
-
-```bash
-npm run prod
+docker run -d -p 9898:9898 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  --name docker-gui-server\
+  ghcr.io/Assifar-Karim/docker-gui-server:latest
 ```
 
 ### Development
 
-Clone the repository
+Clone this fork:
 
 ```bash
-git clone https://github.com/0SalahEddine0/docker-gui
+git clone https://github.com/Assifar-Karim/docker-gui
 ```
 
 Change to the repository directory
@@ -148,3 +130,11 @@ npm start
 ## Contributing
 
 Pull requests are welcome.
+
+## Contributors
+
+- Assifar Karim 
+- Charkaoui Khalil
+- Dahman Iliass
+- Imeghri Sami
+- Zemmouri Salah Eddine
