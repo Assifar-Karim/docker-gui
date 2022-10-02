@@ -133,8 +133,8 @@ Pull requests are welcome.
 
 ## Contributors
 
-- Assifar Karim 
-- Charkaoui Khalil
-- Dahman Iliass
-- Imeghri Sami
-- Zemmouri Salah Eddine
+- [Assifar Karim](https://github.com/Assifar-Karim) 
+- [Charkaoui Khalil](https://github.com/khalil99-68)
+- [Dahman Iliass](https://github.com/iliass-dahman)
+- [Imeghri Sami](https://github.com/imeghri-sami)
+- [Zemmouri Salah Eddine](https://github.com/salaheddine-zemmouri)
